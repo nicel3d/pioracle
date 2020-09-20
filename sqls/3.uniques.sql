@@ -1,8 +1,6 @@
 CREATE OR REPLACE FUNCTION where_unique(val IN VARCHAR2)
     RETURN INTEGER IS
-    chars_unique VARCHAR2(2000);
 BEGIN
-    chars_unique := '';
     for i in 1..LENGTH(val)
         loop
             IF REGEXP_COUNT(val, SUBSTR(val, i, 1)) > 1 THEN
