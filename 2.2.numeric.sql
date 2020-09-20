@@ -10,4 +10,4 @@ EXCEPTION
         RETURN 0;
 END is_number;
 
-SELECT FID FROM t1 where is_number(FID) != 0;
+SELECT count(*) FROM t1 where is_number(FID) != 0;
