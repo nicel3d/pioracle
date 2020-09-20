@@ -31,6 +31,30 @@ https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html
 Файл *2.2.numeric.sql*
 Возвращающих количество записей таблицы T1, содержащих только цифровые символы. (create function)
 
+Файл *main.py* отображает результат: возвращающего количество записей таблицы T1, содержащих только цифровые символы,
+ которые содержат только уникальные цифры, каждая цифра из множества [0-9] обязательно присутствует.
+
+### Исправление отсутсвующих записей в main.py
+Если данные имеются в oracle *SYS.T1* а данные не выводятся нужно, принудительно обновить схему Oracle
+```sql
+begin
+   dbms_stats.gather_schema_stats('sys');
+end;
+```
+
+or
+
+```sql
+alter system flush shared_pool;
+alter system flush buffer_cache;
+```
+
+or
+
+```sql
+alter session set events 'immediate trace name flush_cache';
+```
+
 ### Run Project
 Отображает подключение Oracle из 
 ```shell script
